@@ -1,13 +1,28 @@
 # marvel-characters
 
+This is a fork of the [marvel-characters](https://github.com/mattdesl/marvel-characters) project. On my team we use marvel character names for each of the different test clusters we create. This extends the original project by exporting more than just the character names.
+
+The `characters.json` contains the following information from the marvel API:
+
+ * Id
+ * Name
+ * Description
+ * Thumbnail
+ * Links
+ * Short Name - Shorter, unique name suitable for a generated hostname. Has the following rules:
+   * Strip off the variation of a character (in the API as NAME (VARIATION)  )
+   * Replace any whitespace with '-'
+   * Remove any non-word characters
+   * Restrict the length to 22 characters
+    
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 A list of all public comic book character names in the [Marvel universe](https://en.wikipedia.org/wiki/Marvel_Universe), sourced from the API.
 
-**Total Characters:** 1,252  
-**Last Updated:** Sunday, July 19th, 2015.
+**Total Characters:** 1251
+**Last Updated:** Friday, January 13th, 2017.
 
-Data provided by Marvel. © 2015 Marvel
+Data provided by Marvel. © 2017 Marvel
 
 ## Install
 
@@ -25,13 +40,14 @@ console.log(marvel())
 //=> 'Iron Man'
 
 // all characters
-console.log(marvel.characters)
+console.log(marvel.characterNames)
 //=> ["3-D Man", "A-Bomb", ..., "Zuras", "Zzzax"]
+
+// character information
+console.log(marvel.character('iron-man'))
 ```
 
 ## Usage
-
-[![NPM](https://nodei.co/npm/marvel-characters.png)](https://www.npmjs.com/package/marvel-characters)
 
 ### API
 
@@ -39,9 +55,13 @@ console.log(marvel.characters)
 
 Returns a random Marvel character name, like `"Spider-Man"`.
 
-#### `list = marvel.characters`
+#### `list = marvel.characterNames`
 
 The array of all character names.
+
+#### `character = marvel.character(short-name)`
+
+The json information for a single character.
 
 #### `list = require('marvel-characters/characters.json')`
 
@@ -72,7 +92,7 @@ Green Goblin
 Clone & install:
 
 ```sh
-git clone https://github.com/mattdesl/marvel-characters.git
+git clone https://github.com/chrisdail/marvel-characters.git
 cd marvel-characters
 npm install
 ```

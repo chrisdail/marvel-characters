@@ -10,5 +10,6 @@ if (argv.help) {
     .createReadStream(path.join(__dirname, 'help.txt'))
     .pipe(process.stdout)
 } else {
-  console.log(argv.all ? marvel.characters.join('\n') : marvel())
+  console.log(marvel.character('iron-man'))
+  console.log(argv.all ? marvel.characterNames.join('\n') : marvel())
 }
