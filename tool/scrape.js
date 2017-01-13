@@ -28,16 +28,20 @@ api('characters', {
     limit: 100
   }
 }).on('data', function (character) {
-  shortName = generateShortName(character.name)
-  console.log(character.name + " - " + shortName)
-  list.push({
-    id: character.id,
-    short_name: shortName,
-    name: character.name,
-    description: character.description,
-    thumbnail: character.thumbnail,
-    urls: character.urls
-  })
+  // Only include characters with images
+  if (character.thumbnail.path != "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
+    shortName = generateShortName(character.name)
+    console.log(character.name + " - " + shortName)
+
+    list.push({
+      id: character.id,
+      short_name: shortName,
+      name: character.name,
+      description: character.description,
+      thumbnail: character.thumbnail,
+      urls: character.urls
+    })
+  }
 }).on('end', function () {
   var file = path.resolve(__dirname, '..', 'characters.json')
   list = _.uniqBy(list, function(character) {

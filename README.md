@@ -14,12 +14,14 @@ The `characters.json` contains the following information from the marvel API:
    * Replace any whitespace with '-'
    * Remove any non-word characters
    * Restrict the length to 22 characters
-    
+
+Characters that result in the same short name are removed from the list so there are not duplicates. Characters with no thumbnail image are also removed.
+
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 A list of all public comic book character names in the [Marvel universe](https://en.wikipedia.org/wiki/Marvel_Universe), sourced from the API.
 
-**Total Characters:** 1251
+**Total Characters:** 799
 **Last Updated:** Friday, January 13th, 2017.
 
 Data provided by Marvel. © 2017 Marvel
